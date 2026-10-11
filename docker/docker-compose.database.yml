@@ -3,15 +3,19 @@ services:
     image: postgres:18.6
     restart: always
     environment:
+      POSTGRES_DB: sttqa
+      POSTGRES_USER: sttqa
       POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql
 
   adminer:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 8081:8080
 
 volumes:
   pgdata:
